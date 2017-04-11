@@ -6,9 +6,12 @@
 */
 package com.fth.rmiSpecial.run;
 
+import com.fth.InvokeException;
 import com.fth.rmiSpecial.deploy.KSOA;
 import com.fth.rmiSpecial.deploy.KSoaClient;
 import com.fth.rmiSpecial.service.ServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -17,6 +20,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * FileName:    Server
  * Author:      Br7roy
@@ -24,40 +28,45 @@ import java.util.Map;
  * Description: RMI 服务端
  */
 public class Server {
-    public static Map<String,KSoaClient> serviceMethod = new HashMap<>();
+    public static Map<String, KSoaClient> serviceMethod = new HashMap<>();
+    static private Logger logger = LoggerFactory.getLogger(Server.class);
+
     public static void main(String[] args) {
 
         //注册管理器
         Registry registry = null;
 
+        logger.info("----------->注册服务start<-----------");
         try {
-        	 System.out.println("----------->注册服务start<-----------");
             registry = LocateRegistry.createRegistry(8082);
-            System.out.println("----------->注册服务成功<-----------");
         } catch (RemoteException e) {
-            System.out.println("------------>注册服务失败<-----------");
+            throw new InvokeException("------------>注册服务失败<-----------");
         }
+        logger.info("----------->注册服务成功<-----------");
         //创建一个服务
         try {
             ServiceImpl service = new ServiceImpl();
-            System.out.println("----------->服务发布:<-----------");
-            Method[] Methods = service.getClass().getMethods();
+            logger.info("----------->服务发布:<-----------");
+            Method[] Methods = service.getClass().getDeclaredMethods();
             for (Method method : Methods) {
-                System.out.println(method.getName());
-                for (Annotation annotation : method.getAnnotations()){
-                    System.out.println("annotation" + annotation.annotationType());
+                for (Annotation annotation : method.getDeclaredAnnotations()) {
+                    logger.info("annotation:" + annotation.annotationType());
                 }
                 KSOA ksoa = method.getAnnotation(KSOA.class);
-                if (ksoa != null){
-                    System.out.println("----------->注册soa：[" + method.getName() + "]<-----------");
-                    KSoaClient kSoaClient = new KSoaClient(ksoa.value(), method.getName(), service);
-                    registry.bind(ksoa.value(), kSoaClient);
+                if (ksoa == null) {
+                    logger.error("-------->未找到注解<--------");
+                    throw new RemoteException("-------->未找到注解<--------");
                 }
+                logger.info("----------->注册soa：[" + ksoa.value() + "]<-----------");
+                logger.info("--------->desc：" + ksoa.desc() + "<------------");
+                KSoaClient kSoaClient = new KSoaClient(ksoa.value(), service);
+                registry.rebind(ksoa.value(), kSoaClient);
             }
-        } catch (Exception e) {
-            System.out.println("----------->服务发布失败<----------");
+
+        } catch (InvokeException | RemoteException e) {
+
+            logger.error("----------->服务发布失败<----------");
+
         }
-
-
     }
 }

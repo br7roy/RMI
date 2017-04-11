@@ -37,16 +37,17 @@ public class ServiceImpl
 
 
     @Override
-    @KSOA("queryName")
+    @KSOA(value = "queryName", desc = "查询名称")
     public String queryName(String s) throws RemoteException {
-        System.out.println("queryName....."+s);
+
+        System.out.println("queryName....." + s);
         return simpleDateFormat.format(Calendar.getInstance().getTimeInMillis());
     }
 
     @Override
-    @KSOA("execute")
+    @KSOA(value = "execute", desc = "处理")
     public String execute(String s) throws RemoteException {
-        System.out.println("execute....."+s);
+        System.out.println("execute....." + s);
 
         return simpleDateFormat.format(new Date());
     }

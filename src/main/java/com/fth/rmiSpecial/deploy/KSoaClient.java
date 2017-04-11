@@ -8,9 +8,9 @@ import java.rmi.Remote;
  * on :         2017-04-10
  * Description:
  */
-public class KSoaClient implements SoaClient{
+public class KSoaClient implements SoaClient {
+    private static final long serialVersionUID = 8963733452577369089L;
     private String name;
-    private String method;
     private Remote remote;
 
     public String getName() {
@@ -21,13 +21,6 @@ public class KSoaClient implements SoaClient{
         this.name = name;
     }
 
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
 
     public Remote getRemote() {
         return remote;
@@ -37,9 +30,9 @@ public class KSoaClient implements SoaClient{
         this.remote = remote;
     }
 
-    public KSoaClient(String name, String method, Remote remote) {
+    public KSoaClient(String name,
+                      Remote remote) {
         this.name = name;
-        this.method = method;
         this.remote = remote;
     }
 
@@ -50,13 +43,13 @@ public class KSoaClient implements SoaClient{
     public Object invoke(Object... objs) {
         try {
             Class<?>[] parms = null;
-            if (objs !=null){
+            if (objs != null) {
                 parms = new Class[objs.length];
             }
-            for(int i=0; objs != null & i < objs.length; i++){
+            for (int i = 0; objs != null & i < objs.length; i++) {
                 parms[i] = objs[i].getClass();
             }
-            return remote.getClass().getMethod(method, parms).invoke(remote,objs);
+            return remote.getClass().getMethod(name, parms).invoke(remote, objs);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (Exception e) {
