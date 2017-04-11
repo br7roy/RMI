@@ -4,7 +4,9 @@
 * Author:   fth
 * Date:     2017/4/7 14:38
 */
-package com.fth.rmiSpecial;
+package com.fth.rmiSpecial.run;
+
+import com.fth.rmiSpecial.deploy.KSoaClient;
 
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.Remote;

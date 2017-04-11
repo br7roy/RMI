@@ -4,9 +4,10 @@
 * Author:   fth
 * Date:     2017/4/7 14:21
 */
-package com.fth.rmiSpecial;
+package com.fth.rmiSpecial.service;
 
 
+import com.fth.rmiSpecial.deploy.KSOA;
 import org.apache.log4j.Logger;
 
 import java.rmi.RemoteException;
@@ -25,11 +26,12 @@ import java.util.Date;
 public class ServiceImpl
         extends UnicastRemoteObject
         implements IService {
+    private static final long serialVersionUID = 4770317667348538261L;
     private Logger logger = Logger.getLogger(ServiceImpl.class);
 
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 
-    ServiceImpl() throws RemoteException {
+    public ServiceImpl() throws RemoteException {
         super();
     }
 

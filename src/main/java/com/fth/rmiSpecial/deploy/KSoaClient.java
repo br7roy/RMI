@@ -1,4 +1,4 @@
-package com.fth.rmiSpecial;
+package com.fth.rmiSpecial.deploy;
 
 import java.rmi.Remote;
 
