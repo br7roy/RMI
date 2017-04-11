@@ -4,7 +4,7 @@
 * Author:   fth
 * Date:     2017/4/7 14:20
 */
-package com.fth.rmiSpecial;
+package com.fth.rmiSpecial.service;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

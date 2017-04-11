@@ -1,4 +1,4 @@
-package com.fth.rmiSpecial;
+package com.fth.rmiSpecial.service;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
