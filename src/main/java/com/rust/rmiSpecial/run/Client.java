@@ -4,10 +4,10 @@
 * Author:   fth
 * Date:     2017/4/7 14:38
 */
-package com.fth.rmiSpecial.run;
+package com.rust.rmiSpecial.run;
 
-import com.fth.InvokeException;
-import com.fth.rmiSpecial.deploy.KSoaClient;
+import com.rust.InvokeException;
+import com.rust.rmiSpecial.deploy.KSoaClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,14 +20,14 @@ import java.util.Map;
 
 /**
  * FileName:    Client
- * Author:      Br7roy
+ * Author:      Rust
  * Date:        2017/4/7
  * Description: 远程对象调用 客户端
  */
 public class Client {
     static private Logger logger = LoggerFactory.getLogger(Client.class);
 
-    {
+     {
         init();
     }
 
@@ -35,7 +35,7 @@ public class Client {
 
     public static void main(String[] args) throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Client client = new Client();
-        client.invoke("queryName", "");
+        client.invoke("execute", "");
     }
 
 

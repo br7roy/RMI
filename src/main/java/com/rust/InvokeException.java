@@ -4,7 +4,7 @@
 * Author:   fth
 * Date:     2017/4/11 13:48
 */
-package com.fth;
+package com.rust;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;

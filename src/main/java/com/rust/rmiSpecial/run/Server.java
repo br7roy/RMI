@@ -4,12 +4,12 @@
 * Author:   fth
 * Date:     2017/4/7 15:07
 */
-package com.fth.rmiSpecial.run;
+package com.rust.rmiSpecial.run;
 
-import com.fth.InvokeException;
-import com.fth.rmiSpecial.deploy.KSOA;
-import com.fth.rmiSpecial.deploy.KSoaClient;
-import com.fth.rmiSpecial.service.ServiceImpl;
+import com.rust.InvokeException;
+import com.rust.rmiSpecial.deploy.KSOA;
+import com.rust.rmiSpecial.deploy.KSoaClient;
+import com.rust.rmiSpecial.service.ServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -4,10 +4,10 @@
 * Author:   fth
 * Date:     2017/4/7 14:21
 */
-package com.fth.rmiSpecial.service;
+package com.rust.rmiSpecial.service;
 
 
-import com.fth.rmiSpecial.deploy.KSOA;
+import com.rust.rmiSpecial.deploy.KSOA;
 import org.apache.log4j.Logger;
 
 import java.rmi.RemoteException;

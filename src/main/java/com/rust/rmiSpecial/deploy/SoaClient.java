@@ -1,4 +1,4 @@
-package com.fth.rmiSpecial.deploy;
+package com.rust.rmiSpecial.deploy;
 
 import java.io.Serializable;
 import java.rmi.Remote;
@@ -10,5 +10,5 @@ import java.rmi.Remote;
  * Description:
  */
 public interface SoaClient extends Remote, Serializable {
-    Object invoke(Object...objs);
+    Object invoke(Object...objects);
 }

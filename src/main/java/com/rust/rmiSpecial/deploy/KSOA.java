@@ -1,4 +1,4 @@
-package com.fth.rmiSpecial.deploy;
+package com.rust.rmiSpecial.deploy;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

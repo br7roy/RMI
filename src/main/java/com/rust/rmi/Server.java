@@ -4,9 +4,11 @@
 * Author:   fth
 * Date:     2017/4/7 15:07
 */
-package com.fth.rmi;
+package com.rust.rmi;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import util.LogUtil;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -19,7 +21,7 @@ import java.rmi.registry.Registry;
  * Description: RMI 服务端
  */
 public class Server {
-  private static   Logger logger = Logger.getLogger(Server.class);
+  private static Logger logger = LoggerFactory.getLogger(Server.class);
     public static void main(String[] args) {
 
         //注册管理器
@@ -27,7 +29,8 @@ public class Server {
 
         try {
             registry = LocateRegistry.createRegistry(8080);
-            logger.info("----------->注册服务成功<-----------");
+//            logger.info("----------->注册服务成功<-----------");
+            LogUtil.debug(logger, "注册服务成功");
         } catch (RemoteException e) {
             logger.error("------------>注册服务失败<-----------");
         }

@@ -4,7 +4,7 @@
 * Author:   fth
 * Date:     2017/4/11 14:01
 */
-package com.fth;
+package com.rust;
 
 import java.rmi.AccessException;
 

@@ -4,7 +4,7 @@
 * Author:   fth
 * Date:     2017/4/7 14:38
 */
-package com.fth.rmi;
+package com.rust.rmi;
 
 import org.apache.log4j.Logger;
 

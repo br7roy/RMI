@@ -1,4 +1,7 @@
-package com.fth.rmiSpecial.deploy;
+package com.rust.rmiSpecial.deploy;
+
+import com.rust.InvokeException;
+import util.FooUtil;
 
 import java.rmi.Remote;
 
@@ -40,21 +43,21 @@ public class KSoaClient implements SoaClient {
     }
 
     @Override
-    public Object invoke(Object... objs) {
+    public Object invoke(Object... objects) {
+        if (FooUtil.isBlankArray(objects))
+            throw new InvokeException("调用参数未接收");
         try {
-            Class<?>[] parms = null;
-            if (objs != null) {
-                parms = new Class[objs.length];
+            Class<?>[] params = null;
+            params = new Class[objects.length];
+            for (int i = 0; i < objects.length; i++) {
+                params[i] = objects[i].getClass();
             }
-            for (int i = 0; objs != null & i < objs.length; i++) {
-                parms[i] = objs[i].getClass();
-            }
-            return remote.getClass().getMethod(name, parms).invoke(remote, objs);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
+//            return remote.getClass().getMethod(name, params).invoke(remote, objects);
+            return remote.getClass().getDeclaredMethod(name, params).invoke(remote, objects);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
+
 }
