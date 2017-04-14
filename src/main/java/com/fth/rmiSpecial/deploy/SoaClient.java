@@ -10,5 +10,5 @@ import java.rmi.Remote;
  * Description:
  */
 public interface SoaClient extends Remote, Serializable {
-    Object invoke(Object...objs);
+    Object invoke(Object...objects);
 }
