@@ -3,6 +3,9 @@ package com.rust.rmiSpecial.deploy;
 import com.rust.InvokeException;
 import util.FooUtil;
 
+import com.fth.InvokeException;
+import util.FooUtil;
+
 import java.rmi.Remote;
 
 /**
